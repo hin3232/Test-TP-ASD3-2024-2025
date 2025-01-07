@@ -51,6 +51,18 @@ tree* Initializing_the_Tree_Table(int n){
     }return arrytree;
 }
 //** دالة لملء الأشجار بعدد عشوائي من العقد**//
+void fill_With_Random_Values(tree* arrytree, int n, int N) {
+    for (int i = 0; i < N; i++) {
+        int numNodes = rand() % n + 1;  //* Nombre aléatoire de nœuds entre 1 et maxNodes*/
+        printf("Filling tree %d with %d nodes.\n", i + 1, numNodes);
+
+        for (int j = 0; j < numNodes; j++) {
+            int Value = rand() % 1001;  //*Générer une valeur aléatoire entre 0 et 1000*//
+            Ajout_d_une_Valeur_à_une_Case(arrytree, i, Value, n);
+            printf("Added value %d to tree %d.\n", Value, i + 1);
+        }
+    }
+}
 // دالة لدمج جزئين مفصولين من المصفوفة
 void merge(tree* array, int left, int mid, int right) {
     int n1 = mid - left + 1;
@@ -113,18 +125,7 @@ void mergeSort(tree* array, int left, int right) {
     }
 }
 
-void fill_With_Random_Values(tree* arrytree, int n, int N) {
-    for (int i = 0; i < N; i++) {
-        int numNodes = rand() % n + 1;  //* Nombre aléatoire de nœuds entre 1 et maxNodes*/
-        printf("Filling tree %d with %d nodes.\n", i + 1, numNodes);
 
-        for (int j = 0; j < numNodes; j++) {
-            int Value = rand() % 1001;  //*Générer une valeur aléatoire entre 0 et 1000*//
-            Ajout_d_une_Valeur_à_une_Case(arrytree, i, Value, n);
-            printf("Added value %d to tree %d.\n", Value, i + 1);
-        }
-    }
-}
 void print(tree arrytree, int space) {
     if (arrytree == NULL) return;
     space += 4;
